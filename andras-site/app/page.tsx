@@ -1,29 +1,12 @@
 "use client";
 
-
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
-    Leaf,
-    Sparkles,
-    ArrowRight,
-    Mail,
-    MapPin,
-    Drum,
-    Dumbbell,
-    BookOpenText,
-    Briefcase,
-    Swords,
-    Gamepad2,
-    Code2,
-    Github,
-    Linkedin,
-    Music2,
-    Trophy,
-    Bird,
-    ShieldCheck,
-    ChevronRight,
-    GraduationCap,
+    Leaf, Sparkles, ArrowRight, Mail, MapPin, Drum, Dumbbell, BookOpenText,
+    Briefcase, Swords, Gamepad2, Github, Linkedin, Music2, Trophy, Bird,
+    ChevronRight, GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +14,14 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const FadeIn = ({ children, delay = 0, className = "" }) => (
+
+type FadeInProps = {
+    children: ReactNode;
+    delay?: number;
+    className?: string;
+};
+
+const FadeIn = ({ children, delay = 0, className = "" }: FadeInProps) => (
     <motion.div
         className={className}
         initial={{ opacity: 0, y: 20 }}
@@ -43,7 +33,15 @@ const FadeIn = ({ children, delay = 0, className = "" }) => (
     </motion.div>
 );
 
-const Section = ({ id, eyebrow, title, desc, children }) => (
+type SectionProps = {
+    id?: string;
+    eyebrow?: string;
+    title?: string;
+    desc?: string;
+    children?: ReactNode;
+};
+
+const Section = ({ id, eyebrow, title, desc, children }: SectionProps) => (
     <section id={id} className="relative mx-auto w-full max-w-7xl px-4 py-20 md:py-28">
         <FadeIn>
             <div className="mb-10 flex flex-col gap-3 text-center">
@@ -66,11 +64,12 @@ const Section = ({ id, eyebrow, title, desc, children }) => (
     </section>
 );
 
-const Pill = ({ children }) => (
+const Pill = ({ children }: { children: ReactNode }) => (
     <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm text-muted-foreground">
         <Sparkles className="h-4 w-4" /> {children}
     </span>
 );
+
 
 export default function AndrasBackPersonalEN() {
     const [email, setEmail] = useState("");
@@ -203,11 +202,13 @@ export default function AndrasBackPersonalEN() {
                     <FadeIn delay={0.1}>
                         <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-emerald-100 to-background p-0 shadow-xl">
                             <CardContent className="p-0">
-                                {/* Replace the src paths with your real public/ filenames: andras-drum.jpg */}
-                                <img
+                                <Image
                                     src="/andras-drum.jpg"
                                     alt="András drumming"
+                                    width={1040}
+                                    height={1300}
                                     className="mx-auto aspect-[4/5] w-full max-w-[520px] rounded-2xl object-cover shadow-xl ring-1 ring-border"
+                                    priority
                                 />
                             </CardContent>
                         </Card>
@@ -255,9 +256,11 @@ export default function AndrasBackPersonalEN() {
                                 </div>
                                 <div className="md:col-span-2">
                                     {/* second image */}
-                                    <img
+                                    <Image
                                         src="/andras-chill.jpg"
                                         alt="András smiling at a table"
+                                        width={1400}
+                                        height={900}
                                         className="mt-2 w-full rounded-xl object-cover ring-1 ring-border"
                                     />
                                 </div>
