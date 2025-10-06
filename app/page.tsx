@@ -143,6 +143,9 @@ export default function AndrasBackPersonalEN() {
         <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-background to-background">
             {/* Header */}
             <header className="sticky top-0 z-40 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60">
+
+
+
                 <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4">
                     <a href="#home" className="flex items-center gap-2">
                         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-500/15">

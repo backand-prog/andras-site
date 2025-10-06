@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import GaListener from "./ga-listener";
+
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://andras-back.vercel.app"),
@@ -29,29 +31,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="hu">
             <head>
-                {/* Google Analytics – csak ha van ID az .env.local-ban */}
-                {process.env.NEXT_PUBLIC_GA_ID && (
-                    <>
-                        <Script
-                            strategy="afterInteractive"
-                            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-                        />
-                        <Script
-                            id="ga4-init"
-                            strategy="afterInteractive"
-                            dangerouslySetInnerHTML={{
-                                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-                `,
-                            }}
-                        />
-                    </>
-                )}
+                {/* GA4 – legegyszerűbb, közvetlen (ID-t cseréld a sajátodra) */}
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-PVDSHD4FW3"
+                    strategy="afterInteractive"
+                />
+                <Script id="ga4-init" strategy="afterInteractive">
+                    {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PVDSHD4FW3');
+          `}
+                </Script>
             </head>
-            <body>{children}</body>
+            <body>
+                <GaListener />
+                {children}
+            </body>
         </html>
     );
 }
