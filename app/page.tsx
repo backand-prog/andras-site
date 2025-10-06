@@ -204,7 +204,7 @@ export default function AndrasBackPersonalEN() {
                             <CardContent className="p-0">
                                 <Image
                                     src="/andras-drum.jpg"
-                                    alt="András drumming"
+                                    alt="Bäck András introduction photo - drumming"
                                     width={1040}
                                     height={1300}
                                     className="mx-auto aspect-[4/5] w-full max-w-[520px] rounded-2xl object-cover shadow-xl ring-1 ring-border"
